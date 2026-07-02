@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سرکاری تصدیقی پورٹل</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0b0c16; color: #fff; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .card { width: 100%; max-width: 400px; padding: 20px; text-align: center; background: #13172d; border-radius: 10px; border: 1px solid #232a52; margin: 10px; }
+        .promo-tag { background: #ffc400; color: #000; font-size: 13px; font-weight: bold; padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px; }
+        h2 { font-size: 24px; margin-bottom: 10px; color: #fff; }
+        p { color: #a2b4ee; font-size: 14px; line-height: 1.6; }
+        .option-holder { background: #090a12; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .urdu-btn { background: linear-gradient(180deg, #2a3668 0%, #192142 100%); color: white; border: 1px solid #3d4f96; padding: 14px; width: 100%; border-radius: 6px; font-size: 16px; font-weight: bold; margin-bottom: 10px; cursor: pointer; text-align: right; }
+        .spin-loader { display: none; border: 3px solid #161b36; border-top: 3px solid #ffc400; border-radius: 50%; width: 35px; height: 35px; animation: spinur 0.9s linear infinite; margin: 15px auto; }
+        @keyframes spinur { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .final-btn-link { background: linear-gradient(180deg, #ffdb4a 0%, #ffb300 100%); color: #000; border: none; padding: 16px; width: 100%; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; display: block; text-shadow: none; }
+    </style>
+    <script>!function(f,l,u,x,j,s,a,b){window.flux||(j="undefined"!=typeof fluxOptions?fluxOptions:{},s="undefined"!=typeof fluxDefaults?fluxDefaults:{},(a=l.createElement("script")).src="https://"+u+"/integration/lumetricv2.min.js?v="+x,a.type="text/javascript",a.async="true",queue=[],window.flux={track:function(){queue.push(arguments)}},a.onload=a.onreadystatechange=function(){var rs=this.readyState;if(!rs||"complete"==rs||"loaded"==rs)try{for(window.flux=new Lumetric(u,x,j,s);0!=queue.length;){var args=queue.pop();window.flux.track.apply(null,args)}}catch(e){}},(b=document.getElementsByTagName("script")[0]).parentNode.insertBefore(a,b))}(window,document,"mastercampaigns.cloud","3.3.0");</script>
+    <script>flux.track("view")</script>
+</head>
+<body>
+<div class="card">
+    <div class="promo-tag">خصوصی انعامی مقابلہ</div>
+    <h2>کیا آپ <span style="color: #ffc400;">100,000 روپے</span> جیتنے کے لیے اہل ہیں؟</h2>
+    <p>اپنے موبائل والیٹ یا سم نیٹ ورک کی تصدیق کریں اور لکی ڈرا میں شامل ہوں۔</p>
+
+    <div class="option-holder" id="u1">
+        <button class="urdu-btn" onclick="stepUr2()">✔ ہاں، میرے پاس فعال اکاؤنٹ ہے۔</button>
+        <button class="urdu-btn" onclick="stepUr2()">❌ نہیں، میرے پاس اکاؤنٹ نہیں ہے۔</button>
+    </div>
+
+    <div class="option-holder" id="u2" style="display: none;">
+        <button class="urdu-btn" onclick="runUrFinal()">⚡ ابھی تصدیق مکمل کریں۔</button>
+    </div>
+
+    <div class="spin-loader" id="urSpin"></div>
+
+    <div id="urFinal" style="display: none; margin-top: 20px;">
+        <a href="https://mastercampaigns.cloud/action/1" class="final-btn-link">👉 اپنا نقد انعام حاصل کریں</a>
+    </div>
+
+    <p style="font-size: 10px; color: #434c77; margin-top: 25px;">دستبرداری: یہ ایک آزاد تشہیری پل ہے۔ سروس سبسکرپشن کے چارجز آپ کے منتخب کردہ نیٹ ورک پلان کے مطابق لاگو ہوں گے۔</p>
+</div>
+<script>
+    function stepUr2() { document.getElementById('u1').style.display='none'; document.getElementById('u2').style.display='block'; }
+    function runUrFinal() { document.getElementById('u2').style.display='none'; document.getElementById('urSpin').style.display='block'; setTimeout(function(){ document.getElementById('urSpin').style.display='none'; document.getElementById('urFinal').style.display='block'; }, 1100); }
+</script>
+</body>
+</html>

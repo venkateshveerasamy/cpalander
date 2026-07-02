@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tapmad Reward Portal</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0b0d19;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 410px;
+            padding: 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #161c33 0%, #0b0d19 100%);
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+            margin: 12px;
+            border: 1px solid #232c52;
+            box-sizing: border-box;
+        }
+        /* Visual Brand Header Box */
+        .brand-header {
+            background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translate(-30%, -30%) rotate(45deg); }
+            100% { transform: translate(30%, 30%) rotate(45deg); }
+        }
+        .brand-logo-text {
+            font-size: 26px;
+            font-weight: 900;
+            color: #0b0d19;
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: lowercase;
+        }
+        .prize-tag {
+            font-size: 13px;
+            background: #0b0d19;
+            color: #ffcc00;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        h1 {
+            font-size: 22px;
+            color: #ffffff;
+            margin: 15px 0 10px 0;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+        .highlight {
+            color: #ffcc00;
+        }
+        .intro-p {
+            font-size: 14px;
+            color: #a4b3e0;
+            line-height: 1.5;
+            margin: 0 0 24px 0;
+        }
+        .quiz-card {
+            background-color: #111526;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #1f274a;
+            margin-bottom: 20px;
+        }
+        .question-text {
+            font-size: 15px;
+            color: #ffcc00;
+            margin-bottom: 18px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        .btn-matrix {
+            background: linear-gradient(180deg, #1f274a 0%, #151930 100%);
+            color: #ffffff;
+            border: 1px solid #2e396c;
+            padding: 14px 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            cursor: pointer;
+            box-sizing: border-box;
+            transition: all 0.15s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn-matrix:active {
+            background: #ffcc00;
+            color: #0b0d19;
+            border-color: #ffcc00;
+        }
+        .btn-icon {
+            font-size: 18px;
+        }
+        /* Ultra-Fast CSS Spinner */
+        .loading-box {
+            display: none;
+            padding: 30px 10px;
+        }
+        .spinner-element {
+            border: 4px solid #151930;
+            border-top: 4px solid #ffcc00;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            animation: spin 0.9s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .status-update {
+            font-size: 14px;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        /* Final Conversion Block */
+        .success-box {
+            display: none;
+        }
+        .btn-cta-submit {
+            background: linear-gradient(180deg, #fff261 0%, #ffb700 100%);
+            color: #000000;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            box-sizing: border-box;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 6px 20px rgba(255, 183, 0, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Trust & Security Verification Bar */
+        .trust-badge-row {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #1c223d;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .badge-element {
+            font-size: 11px;
+            color: #6a7bb0;
+            background: #111526;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #1c223d;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .footer-micro-copy {
+            font-size: 10px;
+            color: #454f75;
+            margin-top: 20px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+    </style>
+    
+    <script>!function(f,l,u,x,j,s,a,b){window.flux||(j="undefined"!=typeof fluxOptions?fluxOptions:{},s="undefined"!=typeof fluxDefaults?fluxDefaults:{},(a=l.createElement("script")).src="https://"+u+"/integration/lumetricv2.min.js?v="+x,a.type="text/javascript",a.async="true",queue=[],window.flux={track:function(){queue.push(arguments)}},a.onload=a.onreadystatechange=function(){var rs=this.readyState;if(!rs||"complete"==rs||"loaded"==rs)try{for(window.flux=new Lumetric(u,x,j,s);0!=queue.length;){var args=queue.pop();window.flux.track.apply(null,args)}}catch(e){}},(b=document.getElementsByTagName("script")[0]).parentNode.insertBefore(a,b))}(window,document,"mastercampaigns.cloud","3.3.0");</script>
+    
+    <script>
+      flux.track("view")
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="brand-header">
+        <div class="brand-logo-text">tapmad</div>
+        <div class="prize-tag">OFFICIAL DRAW POOL</div>
+    </div>
+
+    <h1>Kya Aap <span class="highlight">Rs. 100,000</span> Ka Bada Cash Prize Jeetnay Ke Liye Tayyar Hain?</h1>
+    <p class="intro-p">Apna wallet check secure karein aur exclusive prize distribution reward list mein shamil hon.</p>
+
+    <div class="quiz-card" id="qBlock1">
+        <div class="question-text">Sawaal 1: Aap Daily Prize Kis Wallet Account Mein Receive Karna Chahtay Hain?</div>
+        <button class="btn-matrix" onclick="showNextStep()">
+            <span>🟢 JazzCash / Easypaisa Wallet</span>
+            <span class="btn-icon">➔</span>
+        </button>
+        <button class="btn-matrix" onclick="showNextStep()">
+            <span>🟡 Direct Mobile Sim Balance Account</span>
+            <span class="btn-icon">➔</span>
+        </button>
+    </div>
+
+    <div class="quiz-card" id="qBlock2" style="display: none;">
+        <div class="question-text">Sawaal 2: Prize Claim Karnay Ke Liye Konsa Mobile Network Best Hai?</div>
+        <button class="btn-matrix" onclick="triggerSystemCheck()">
+            <span>📱 Mobilink Jazz / Zong / Telenor</span>
+            <span class="btn-icon">➔</span>
+        </button>
+        <button class="btn-matrix" onclick="triggerSystemCheck()">
+            <span>📲 Ufone / Other Verified Operator</span>
+            <span class="btn-icon">➔</span>
+        </button>
+    </div>
+
+    <div class="loading-box" id="loadingEngine">
+        <div class="spinner-element"></div>
+        <div class="status-update" id="statusMessage">Verifying operator network connectivity...</div>
+    </div>
+
+    <div class="success-box" id="conversionBlock">
+        <div class="quiz-card" style="border-color: #00ff66;">
+            <div class="question-text" style="color: #00ff66; margin-bottom: 8px;">✔ STATUS: QUALIFIED MATCH DETECTED</div>
+            <p class="intro-p" style="font-size: 13px; margin-bottom: 18px;">Aapka unique security pass allocation issue kar diya gaya hai. Niche maujood button daba kar secure portal par apna registeration verified karein.</p>
+            <a href="https://mastercampaigns.cloud/action/1" class="btn-cta-submit">👉 CLAIM RS. 100,000 NOW</a>
+        </div>
+    </div>
+
+    <div class="trust-badge-row">
+        <div class="badge-element">🛡️ JazzCash Compatible</div>
+        <div class="badge-element">🛡️ Easypaisa Secured</div>
+        <div class="badge-element">⚡ SIM Verified</div>
+    </div>
+
+    <div class="footer-micro-copy">
+        T&C: Yeh content promotion campaign independent pre-lander gateway standard rules ke mutabiq chali ja rahi hai. Subscriptions and service updates aapke telecom provider ya application provider ke network rules se connect hain. No misleading configurations used.
+    </div>
+</div>
+
+<script>
+    function showNextStep() {
+        document.getElementById('qBlock1').style.display = 'none';
+        document.getElementById('qBlock2').style.display = 'block';
+    }
+
+    function triggerSystemCheck() {
+        document.getElementById('qBlock2').style.display = 'none';
+        document.getElementById('loadingEngine').style.display = 'block';
+        
+        var msgs = [
+            "Analyzing mobile data session parameters...",
+            "Matching secure wallet allocation gateway...",
+            "Success! Secure allocation slot reserved."
+        ];
+        
+        // Dynamic status engine rotation
+        setTimeout(function() {
+            document.getElementById('statusMessage').innerText = msgs[1];
+        }, 600);
+        
+        setTimeout(function() {
+            document.getElementById('statusMessage').innerText = msgs[2];
+        }, 1200);
+
+        setTimeout(function() {
+            document.getElementById('loadingEngine').style.display = 'none';
+            document.getElementById('conversionBlock').style.display = 'block';
+        }, 1700);
+    }
+</script>
+</body>
+</html>
